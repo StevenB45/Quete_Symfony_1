@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Terrains list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Icao</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Zipcode</th>
+                <th>Country</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for terrain in terrains %}
+            <tr>
+                <td><a href="{{ path('terrain_show', { 'id': terrain.id }) }}">{{ terrain.id }}</a></td>
+                <td>{{ terrain.name }}</td>
+                <td>{{ terrain.icao }}</td>
+                <td>{{ terrain.latitude }}</td>
+                <td>{{ terrain.longitude }}</td>
+                <td>{{ terrain.address }}</td>
+                <td>{{ terrain.city }}</td>
+                <td>{{ terrain.zipcode }}</td>
+                <td>{{ terrain.country }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('terrain_show', { 'id': terrain.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

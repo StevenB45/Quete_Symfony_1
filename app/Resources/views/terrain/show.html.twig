@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Terrain</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ terrain.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ terrain.name }}</td>
+            </tr>
+            <tr>
+                <th>Icao</th>
+                <td>{{ terrain.icao }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ terrain.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ terrain.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ terrain.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ terrain.city }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ terrain.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ terrain.country }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('terrain_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
