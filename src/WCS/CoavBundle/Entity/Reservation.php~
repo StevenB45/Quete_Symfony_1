@@ -185,35 +185,4 @@ class Reservation
     {
         return $this->wasDone;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->passenger = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add passenger
-     *
-     * @param \WCS\CoavBundle\Entity\User $passenger
-     *
-     * @return Reservation
-     */
-    public function addPassenger(\WCS\CoavBundle\Entity\User $passenger)
-    {
-        $this->passenger[] = $passenger;
-
-        return $this;
-    }
-
-    /**
-     * Remove passenger
-     *
-     * @param \WCS\CoavBundle\Entity\User $passenger
-     */
-    public function removePassenger(\WCS\CoavBundle\Entity\User $passenger)
-    {
-        $this->passenger->removeElement($passenger);
-    }
 }
