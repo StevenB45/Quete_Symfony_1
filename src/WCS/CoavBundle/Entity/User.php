@@ -13,6 +13,27 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     /**
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="pilot")
+     */
+    private $pilots;
+
+    /**
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="userRateds")
+     */
+    private $userRateds;
+
+    /**
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reviewAuthors")
+     */
+    private $reviewAuthors;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Review", inversedBy="review")
+     */
+    private $review;
+
+
+    /**
     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
     * @ORM\JoinColumn(nullable=false)
     */
@@ -449,5 +470,131 @@ class User
     public function getReservations()
     {
         return $this->reservations;
+    }
+
+    /**
+     * Add userRated
+     *
+     * @param \WCS\CoavBundle\Entity\User $userRated
+     *
+     * @return User
+     */
+    public function addUserRated(\WCS\CoavBundle\Entity\User $userRated)
+    {
+        $this->userRateds[] = $userRated;
+
+        return $this;
+    }
+
+    /**
+     * Remove userRated
+     *
+     * @param \WCS\CoavBundle\Entity\User $userRated
+     */
+    public function removeUserRated(\WCS\CoavBundle\Entity\User $userRated)
+    {
+        $this->userRateds->removeElement($userRated);
+    }
+
+    /**
+     * Get userRateds
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserRateds()
+    {
+        return $this->userRateds;
+    }
+
+    /**
+     * Add reviewAuthor
+     *
+     * @param \WCS\CoavBundle\Entity\User $reviewAuthor
+     *
+     * @return User
+     */
+    public function addReviewAuthor(\WCS\CoavBundle\Entity\User $reviewAuthor)
+    {
+        $this->reviewAuthors[] = $reviewAuthor;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviewAuthor
+     *
+     * @param \WCS\CoavBundle\Entity\User $reviewAuthor
+     */
+    public function removeReviewAuthor(\WCS\CoavBundle\Entity\User $reviewAuthor)
+    {
+        $this->reviewAuthors->removeElement($reviewAuthor);
+    }
+
+    /**
+     * Get reviewAuthors
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReviewAuthors()
+    {
+        return $this->reviewAuthors;
+    }
+
+    /**
+     * Add pilot
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $pilot
+     *
+     * @return User
+     */
+    public function addPilot(\WCS\CoavBundle\Entity\Flight $pilot)
+    {
+        $this->pilots[] = $pilot;
+
+        return $this;
+    }
+
+    /**
+     * Remove pilot
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $pilot
+     */
+    public function removePilot(\WCS\CoavBundle\Entity\Flight $pilot)
+    {
+        $this->pilots->removeElement($pilot);
+    }
+
+    /**
+     * Get pilots
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPilots()
+    {
+        return $this->pilots;
+    }
+
+    /**
+     * Set review
+     *
+     * @param \WCS\CoavBundle\Entity\Review $review
+     *
+     * @return User
+     */
+    public function setReview(\WCS\CoavBundle\Entity\Review $review = null)
+    {
+        $this->review = $review;
+
+        return $this;
+    }
+
+    /**
+     * Get review
+     *
+     * @return \WCS\CoavBundle\Entity\Review
+     */
+    public function getReview()
+    {
+        return $this->review;
     }
 }

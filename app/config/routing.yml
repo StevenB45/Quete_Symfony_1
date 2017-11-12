@@ -1,3 +1,7 @@
+wcs_coav_review:
+    resource: "@WCSCoavBundle/Controller/ReviewController.php"
+    type:     annotation
+
 wcs_coav_terrain:
     resource: "@WCSCoavBundle/Controller/TerrainController.php"
     type:     annotation
