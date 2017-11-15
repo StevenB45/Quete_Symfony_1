@@ -2,9 +2,11 @@
 
 namespace WCS\CoavBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use WCS\CoavBundle\Entity\Terrain;
 
 class FlightType extends AbstractType
 {
@@ -13,7 +15,23 @@ class FlightType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('departure')->add('arrival')->add('nbFreeSeats')->add('seatPrice')->add('takeOffTime')->add('publicationDate')->add('description')->add('pilot')->add('plane')->add('wasDone');
+        $builder
+            ->add('departure', EntityType::class, [
+                'class' => Terrain::class,
+                'choice_label' => 'fullName',
+            ])
+            ->add('arrival', EntityType::class, [
+                'class'=> Terrain::class,
+                'choice_label' => 'fullName',
+            ])
+            ->add('nbFreeSeats')
+            ->add('seatPrice')
+            ->add('takeOffTime')
+            ->add('publicationDate')
+            ->add('description')
+            ->add('pilot')
+            ->add('plane')
+            ->add('wasDone');
     }
     
     /**
