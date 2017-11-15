@@ -573,4 +573,28 @@ class User
     {
         return $this->pilots;
     }
+
+    /**
+     * Set review
+     *
+     * @param \WCS\CoavBundle\Entity\Review $review
+     *
+     * @return User
+     */
+    public function setReview(\WCS\CoavBundle\Entity\Review $review = null)
+    {
+        $this->review = $review;
+
+        return $this;
+    }
+
+    /**
+     * Get review
+     *
+     * @return \WCS\CoavBundle\Entity\Review
+     */
+    public function getReview()
+    {
+        return $this->review;
+    }
 }

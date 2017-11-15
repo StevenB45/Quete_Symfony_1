@@ -37,7 +37,7 @@ class Flight
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="arrivals")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $arrivals;
+    private $arrival;
 
     /**
      * @var int
