@@ -18,25 +18,19 @@ class User
     private $pilots;
 
     /**
-     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="userRateds")
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Review", mappedBy="userRated")
      */
     private $userRateds;
 
     /**
-     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reviewAuthors")
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Review", mappedBy="reviewAuthor")
      */
     private $reviewAuthors;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Review", inversedBy="review")
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $review;
-
-
-    /**
-    * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
-    * @ORM\JoinColumn(nullable=false)
-    */
     private $reservations;
 
     /**
@@ -110,13 +104,6 @@ class User
      * @ORM\Column(name="note", type="smallint", nullable=true)
      */
     private $note;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="reviews", type="integer", nullable=true)
-     */
-    private $reviews;
 
     /**
      * @var bool
@@ -359,29 +346,6 @@ class User
         return $this->note;
     }
 
-    /**
-     * Set reviews
-     *
-     * @param integer $reviews
-     *
-     * @return User
-     */
-    public function setReviews($reviews)
-    {
-        $this->reviews = $reviews;
-
-        return $this;
-    }
-
-    /**
-     * Get reviews
-     *
-     * @return int
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
-    }
 
     /**
      * Set isACertifiedPilot
@@ -430,6 +394,7 @@ class User
     {
         return $this->isActive;
     }
+
     /**
      * Constructor
      */
@@ -572,29 +537,5 @@ class User
     public function getPilots()
     {
         return $this->pilots;
-    }
-
-    /**
-     * Set review
-     *
-     * @param \WCS\CoavBundle\Entity\Review $review
-     *
-     * @return User
-     */
-    public function setReview(\WCS\CoavBundle\Entity\Review $review = null)
-    {
-        $this->review = $review;
-
-        return $this;
-    }
-
-    /**
-     * Get review
-     *
-     * @return \WCS\CoavBundle\Entity\Review
-     */
-    public function getReview()
-    {
-        return $this->review;
     }
 }

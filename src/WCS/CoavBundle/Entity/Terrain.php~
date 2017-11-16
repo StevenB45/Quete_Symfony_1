@@ -13,11 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Terrain
 {
 
-    public function __toString()
-    {
-        return $this->icao . " - " . $this->name . " " . $this->zipcode;
-    }
-
     /**
     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="departure")
     */

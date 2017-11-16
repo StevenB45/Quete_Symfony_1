@@ -1,3 +1,7 @@
+wcs_coav_user:
+    resource: "@WCSCoavBundle/Controller/UserController.php"
+    type:     annotation
+
 wcs_coav_review:
     resource: "@WCSCoavBundle/Controller/ReviewController.php"
     type:     annotation
