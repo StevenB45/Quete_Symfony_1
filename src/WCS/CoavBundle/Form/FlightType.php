@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use WCS\CoavBundle\Entity\Terrain;
+use WCS\CoavBundle\Entity\User;
 
 class FlightType extends AbstractType
 {
@@ -18,18 +19,21 @@ class FlightType extends AbstractType
         $builder
             ->add('departure', EntityType::class, [
                 'class' => Terrain::class,
-                'choice_label' => 'fullName',
+                'choice_label' => 'name',
             ])
             ->add('arrival', EntityType::class, [
                 'class'=> Terrain::class,
-                'choice_label' => 'fullName',
+                'choice_label' => 'name',
             ])
             ->add('nbFreeSeats')
             ->add('seatPrice')
             ->add('takeOffTime')
             ->add('publicationDate')
             ->add('description')
-            ->add('pilot')
+            ->add('pilot', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'lastName',
+            ])
             ->add('plane')
             ->add('wasDone');
     }

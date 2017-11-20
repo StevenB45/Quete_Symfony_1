@@ -41,11 +41,6 @@ class Review
     private $reviewAuthor;
 
     /**
-     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reviews")
-     */
-    private $reviews;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="publicationDate", type="datetime")
@@ -188,46 +183,5 @@ class Review
     public function getNote()
     {
         return $this->note;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->reviews = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add review
-     *
-     * @param \WCS\CoavBundle\Entity\User $review
-     *
-     * @return Review
-     */
-    public function addReview(\WCS\CoavBundle\Entity\User $review)
-    {
-        $this->reviews[] = $review;
-
-        return $this;
-    }
-
-    /**
-     * Remove review
-     *
-     * @param \WCS\CoavBundle\Entity\User $review
-     */
-    public function removeReview(\WCS\CoavBundle\Entity\User $review)
-    {
-        $this->reviews->removeElement($review);
-    }
-
-    /**
-     * Get reviews
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
     }
 }

@@ -2,9 +2,11 @@
 
 namespace WCS\CoavBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use WCS\CoavBundle\Entity\User;
 
 class ReviewType extends AbstractType
 {
@@ -13,9 +15,20 @@ class ReviewType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('text')->add('userRated')->add('reviewAuthor')->add('publicationDate')->add('note');
+        $builder
+            ->add('text')
+            ->add('userRated', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'lastName',
+            ])
+            ->add('reviewAuthor', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'lastName',
+            ])
+            ->add('publicationDate')
+            ->add('note');
     }
-    
+
     /**
      * {@inheritdoc}
      */

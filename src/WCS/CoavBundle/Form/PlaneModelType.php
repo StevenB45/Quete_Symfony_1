@@ -13,7 +13,12 @@ class PlaneModelType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('model')->add('manufacturer')->add('cruiseSpeed')->add('planeNbSeats')->add('isAvailable');
+        $builder
+            ->add('model')
+            ->add('manufacturer')
+            ->add('cruiseSpeed')
+            ->add('planeNbSeats')
+            ->add('isAvailable');
     }
     
     /**

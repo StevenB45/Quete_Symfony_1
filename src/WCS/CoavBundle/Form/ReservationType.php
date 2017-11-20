@@ -2,9 +2,12 @@
 
 namespace WCS\CoavBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use WCS\CoavBundle\Entity\Reservation;
+use WCS\CoavBundle\Entity\User;
 
 class ReservationType extends AbstractType
 {
@@ -13,7 +16,15 @@ class ReservationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nbReservedSeats')->add('publicationDate')->add('passenger')->add('flight')->add('wasDone');
+        $builder
+            ->add('nbReservedSeats')
+            ->add('publicationDate')
+            ->add('passengers', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'lastName',
+            ])
+            ->add('flight')
+            ->add('wasDone');
     }
     
     /**
