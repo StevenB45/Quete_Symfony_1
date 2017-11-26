@@ -21,7 +21,6 @@ class ReservationType extends AbstractType
             ->add('publicationDate')
             ->add('passengers', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'lastName',
             ])
             ->add('flight')
             ->add('wasDone');
