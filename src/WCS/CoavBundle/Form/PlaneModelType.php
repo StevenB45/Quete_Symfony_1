@@ -3,8 +3,10 @@
 namespace WCS\CoavBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use WCS\CoavBundle\Entity\PlaneModel;
 
 class PlaneModelType extends AbstractType
 {
@@ -20,7 +22,7 @@ class PlaneModelType extends AbstractType
             ->add('planeNbSeats')
             ->add('isAvailable');
     }
-    
+
     /**
      * {@inheritdoc}
      */

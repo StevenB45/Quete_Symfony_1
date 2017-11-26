@@ -4,8 +4,10 @@ namespace WCS\CoavBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use WCS\CoavBundle\Entity\PlaneModel;
 use WCS\CoavBundle\Entity\Terrain;
 use WCS\CoavBundle\Entity\User;
 
@@ -26,7 +28,7 @@ class FlightType extends AbstractType
                 'choice_label' => 'name',
             ])
             ->add('nbFreeSeats')
-            ->add('seatPrice')
+            ->add('seatPrice', MoneyType::class)
             ->add('takeOffTime')
             ->add('publicationDate')
             ->add('description')
@@ -34,7 +36,10 @@ class FlightType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'lastName',
             ])
-            ->add('plane')
+            ->add('plane', EntityType::class, [
+                'class'=> PlaneModel::class,
+                'choice_label' => 'model',
+            ])
             ->add('wasDone');
     }
     
