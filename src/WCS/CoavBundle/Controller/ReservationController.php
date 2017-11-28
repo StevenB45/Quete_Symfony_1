@@ -41,8 +41,8 @@ class ReservationController extends Controller
     {
         $reservation = new Reservation();
         $form = $this->createForm('WCS\CoavBundle\Form\ReservationType', $reservation);
-        $form->handleRequest($request);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($reservation);

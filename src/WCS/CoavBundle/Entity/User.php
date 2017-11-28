@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+
+//    public function __toString()
+//    {
+//        return $this->getFirstName().' '.$this->getLastName();
+//    }
     /**
      * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="pilot")
      */

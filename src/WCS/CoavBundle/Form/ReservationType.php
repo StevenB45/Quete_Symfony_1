@@ -4,6 +4,8 @@ namespace WCS\CoavBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use WCS\CoavBundle\Entity\Flight;
@@ -20,14 +22,18 @@ class ReservationType extends AbstractType
         $builder
             ->add('nbReservedSeats')
             ->add('publicationDate')
-            ->add('passengers', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'lastName',
+            ->add('passengers', CollectionType::class, [
+                'entry_type' => EntityType::class,
+                'entry_options' => array('class' => User::class,
+                    'choice_label' => 'lastName')
             ])
-            ->add('flight')
+            ->add('flight', EntityType::class, [
+                'class' => Flight::class,
+                'choice_label' => 'id',
+            ])
             ->add('wasDone');
     }
-    
+
     /**
      * {@inheritdoc}
      */

@@ -20,8 +20,8 @@
             <tr>
                 <td><a href="{{ path('review_show', { 'id': review.id }) }}">{{ review.id }}</a></td>
                 <td>{{ review.text }}</td>
-                <td>{{ review.userRated }}</td>
-                <td>{{ review.reviewAuthor }}</td>
+                <td>{{ review.userRated.userName }}</td>
+                <td>{{ review.reviewAuthor.userName }}</td>
                 <td>{% if review.publicationDate %}{{ review.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ review.note }}</td>
                 <td>
