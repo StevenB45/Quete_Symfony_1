@@ -20,13 +20,13 @@
         <tr>
             <th>Distance</th>
             <td>
-                {% if distance %}{{ distance|number_format(2, ',', '') }}{% endif %}
+                {% if distance %}{{ distance|number_format(2, ',', ' ') }}{% endif %}
             </td>
         </tr>
         <tr>
             <th>Durée</th>
             <td>
-                {{ duration }}
+                {{ duration|number_format(2, '.')}}
             </td>
         </tr>
         <tr>
