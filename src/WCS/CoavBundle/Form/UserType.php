@@ -2,11 +2,13 @@
 
 namespace WCS\CoavBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use WCS\CoavBundle\Entity\Reservation;
 
 class UserType extends AbstractType
 {
@@ -32,7 +34,10 @@ class UserType extends AbstractType
             ->add('note')
             ->add('isACertifiedPilot')
             ->add('isActive')
-            ->add('reservations');
+            ->add('reservations', EntityType::class, [
+                'class' => Reservation::class,
+                'choice_label' => 'id',
+                ]);
     }
 
     /**

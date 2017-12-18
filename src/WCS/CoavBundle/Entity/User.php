@@ -57,7 +57,6 @@ class User extends BaseUser
      */
     private $lastName;
 
-
     /**
      * @var string
      *
